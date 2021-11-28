@@ -13,19 +13,11 @@ const GamesIndexPage = (props) => {
     fetchGames()
   }, [])
 	
-	const gameTiles = games.data.map((games) => { 
-    return (
-          <div>
-            key={games.id}
-            games={games.title}
-						</div>
-          
-      )
-  })
+
 
 	return(
 		<div>
-			{gameTiles}
+			{games.data}
 		</div>
 		
 	)
