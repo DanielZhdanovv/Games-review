@@ -16,7 +16,6 @@ class Api::V1::GamesController < ApplicationController
   
     response = http.request(request)
     data = response.read_body
-
    
 
   render json: { data: data }

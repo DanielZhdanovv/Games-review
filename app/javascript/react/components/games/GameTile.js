@@ -1,10 +1,14 @@
-// import React from 'react'
+import React from 'react'
 
-// const GameTile = (props) => {
-//   const {game} = props
-//   return(
-//     <p>{game.title}</p>
-//   )
-// }
+const GameTile = (props) => {
 
-// export default GameTile
+  return(
+    <div className="games-list">
+    <p>{props.title}</p>
+    <img src={props.thumbnail}></img>
+    </div>
+
+  )
+}
+
+export default GameTile
