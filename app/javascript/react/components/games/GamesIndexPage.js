@@ -29,9 +29,13 @@ const GamesIndexPage = (props) => {
   })
 
 	return(
-		<div>
+    <div className="grid-container text-center">
+    <div className="grid-x grid-padding-x grid-margin-x align-center grid-padding-y">
+		<div className="cell small-8">
 			{gamesTiles}
 		</div>
+    </div>
+    </div>
 		
 	)
 }

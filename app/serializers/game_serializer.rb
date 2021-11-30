@@ -1,4 +1,4 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :title, :thumbnail, :short_description
+  attributes :id, :title, :thumbnail
 
 end
