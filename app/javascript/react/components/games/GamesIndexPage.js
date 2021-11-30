@@ -7,12 +7,14 @@ const GamesIndexPage = (props) => {
   const fetchGames = async () => {
     const response = await fetch("/api/v1/games")
     const parsedGames = await response.json()
-    const arrayOfGames = JSON.parse(parsedGames.data)
-    setGames(arrayOfGames)
+    // debugger
+    // const arrayOfGames = JSON.parse(parsedGames.data)
+    setGames(parsedGames.data)
   }
   useEffect(() => {
     fetchGames()
   }, [])
+
 
   const gamesTiles = games.map((game) => {
     return (

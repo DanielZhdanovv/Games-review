@@ -6,9 +6,9 @@ const [game, setGame] = useState([])
   const fetchGame = async () => {
     const response = await fetch(`/api/v1/games/${props.match.params.id}`)
     const parsedGames = await response.json()
-    const arrayOfGames = JSON.parse(parsedGames.data)
-    setGame(arrayOfGames)
-    
+    // debugger
+    // const arrayOfGames = JSON.parse(parsedGames.data)
+    setGame(parsedGames.data)
   }
 
   useEffect(() => {

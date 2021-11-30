@@ -15,13 +15,16 @@ class Api::V1::GamesController < ApplicationController
     request["x-rapidapi-key"] = 'aec551c9b7msh5a61fd88e0d4ccbp1d8828jsn959d761e2a14'
   
     response = http.request(request)
-    data = response.read_body
+    json_data = response.read_body
+    data = JSON.parse(json_data)
     
 
   render json: { data: data }
   end
   def show
-    id = ""
+    game = Game.find_by(free_to_play_games_id: params[:id])
+
+    if !game
     url = URI("https://free-to-play-games-database.p.rapidapi.com/api/game?id=#{params["id"]}")
 
     http = Net::HTTP.new(url.host, url.port)
@@ -35,7 +38,13 @@ class Api::V1::GamesController < ApplicationController
     response = http.request(request)
     data = response.read_body
 
+    parsed_data = JSON.parse(data)
+    Game.create(titile: parsed_data.title)
+
     render json: { data: data }
+    else 
+      render json: game
+    end
 
     
 end
