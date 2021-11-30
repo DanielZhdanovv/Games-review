@@ -21,7 +21,7 @@ const GamesIndexPage = (props) => {
         id={game.id}
         title={game.title}
         thumbnail={game.thumbnail}
-        
+
       />
     )
   })
