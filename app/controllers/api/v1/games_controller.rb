@@ -23,8 +23,8 @@ class Api::V1::GamesController < ApplicationController
   end
   def show
 
-    game = Game.find_by(id: params[:id])
-    if !Game.exists?(params[:id])
+    game = Game.find_by(api_id: params[:id])
+    if !Game.exists?(api_id: params[:id])
       url = URI("https://free-to-play-games-database.p.rapidapi.com/api/game?id=#{params["id"]}")
 
       http = Net::HTTP.new(url.host, url.port)
@@ -39,13 +39,11 @@ class Api::V1::GamesController < ApplicationController
       json_data = response.read_body
       data = JSON.parse(json_data)
 
-      Game.create(title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"])
+      Game.create(api_id: data["id"], title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"])
 
       render json: data
     else 
       render json: game
     end
-
-    
   end
 end
