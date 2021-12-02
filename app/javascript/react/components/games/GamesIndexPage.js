@@ -7,8 +7,6 @@ const GamesIndexPage = (props) => {
   const fetchGames = async () => {
     const response = await fetch("/api/v1/games")
     const parsedGames = await response.json()
-    // debugger
-    // const arrayOfGames = JSON.parse(parsedGames.data)
     setGames(parsedGames.data)
   }
   useEffect(() => {
@@ -29,13 +27,29 @@ const GamesIndexPage = (props) => {
   })
 
 	return(
-    <div className="grid-container text-center">
-    <div className="grid-x grid-padding-x grid-margin-x align-center grid-padding-y">
-		<div className="cell small-8">
-			{gamesTiles}
-		</div>
+    <div>
+    <div className="row expanded collapse">
+  <div className="column">
+    <div className="large-article-header">
+      <div className="large-article-header-content">
+        <div className="center-container">
+          <div className="article-date">
+            <p>Created by Daniel Zhdanov</p>
+          </div>
+          <div className="article-title">
+            <h1>Every Free Game You Would <strong>EVER</strong> Need</h1>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
+</div>
+    <div className="product-card">
+    {gamesTiles}
+</div>
+</div>
+   
+
 		
 	)
 }

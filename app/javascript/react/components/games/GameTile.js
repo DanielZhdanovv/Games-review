@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom'
 const GameTile = (props) => {
 
   return(
-    <Link to={`/games/${props.id}`}>
-    <div className="games-list">
-    <p>{props.title}</p>
+  <div className="product-card-thumbnail">
+  <Link to={`/games/${props.id}`}>
     <img src={props.thumbnail} alt='game logo image'></img>
-    </div>
+    <span className="product-card-desc">{props.title}</span>
     </Link>
+    </div>
 
   )
 }

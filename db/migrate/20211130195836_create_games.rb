@@ -4,7 +4,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :title, null: false
       t.string :thumbnail
       t.string :genre
-
+      t.string :api_id
       t.timestamps
     end
   end

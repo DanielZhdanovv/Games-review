@@ -1,0 +1,114 @@
+
+.menu-hover-lines {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.35s ease;
+}
+
+.menu-hover-lines li a {
+  padding: 0.75rem 0;
+  color: white;
+  position: relative;
+  margin-left: 1rem;
+}
+
+.menu-hover-lines li:first-child a {
+  margin-left: 0;
+}
+
+.menu-hover-lines li.active > a {
+  background-color: transparent;
+}
+
+.menu-hover-lines a:before,
+.menu-hover-lines a::after {
+  height: 3px;
+  position: absolute;
+  content: '';
+  transition: all 0.35s ease;
+  background-color: white;
+  width: 0;
+}
+
+.menu-hover-lines a::before {
+  top: 0;
+  left: 0;
+}
+
+.menu-hover-lines a::after {
+  bottom: 0;
+  right: 0;
+}
+
+.menu-hover-lines a:hover,
+.menu-hover-lines li.active > a {
+  color: white;
+  transition: all 0.35s ease;
+}
+
+.menu-hover-lines a:hover::before,
+.menu-hover-lines .active a::before,
+.menu-hover-lines a:hover::after,
+.menu-hover-lines .active a::after {
+  width: 100%;
+}
+
+
+
+.product-card {
+  background-color: rgb(29, 28, 28);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 80px;
+}
+
+.product-card-thumbnail {
+  display: block;
+  position: relative;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.product-card-title {
+  font-family: 'Open sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.product-card-desc {
+  color: white;
+  display: block;
+  font-family: 'Open sans', sans-serif;
+  font-size: 1rem;
+}
+
+
+.product-card-colors {
+  display: block;
+  margin-top: 0.8rem;
+}
+
+body{
+  background-color: rgb(29, 28, 28);
+}
+
+.nav{
+  margin: 0.5rem 0.5rem;
+  text-align: center;
+}
+// .signup{
+// }
+.menu {
+  background-color: black;
+}
+
+.show{
+  color: white
+}
