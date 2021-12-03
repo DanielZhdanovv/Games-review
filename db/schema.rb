@@ -16,10 +16,19 @@ ActiveRecord::Schema.define(version: 2021_12_01_205938) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.string "thumbnail"
     t.string "genre"
     t.string "api_id"
+    t.string "short_description"
+    t.string "description"
+    t.string "game_url"
+    t.string "platform"
+    t.string "publisher"
+    t.string "developer"
+    t.string "release_date"
+    t.string "minimum_system_requirements"
+    t.string "screenshots"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

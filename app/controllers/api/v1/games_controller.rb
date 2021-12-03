@@ -39,7 +39,7 @@ class Api::V1::GamesController < ApplicationController
       json_data = response.read_body
       data = JSON.parse(json_data)
 
-      Game.create(api_id: data["id"], title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"])
+      Game.create(api_id: data["id"], title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"], short_description: data["short_description"], description: data["description"], platform: data["platform"], publisher: data["publisher"], developer: data["developer"], release_date: data["release_date"], minimum_system_requirements: data["minimum_system_requirements"], screenshots: data["screenshots"])
 
       render json: data
     else 
@@ -47,3 +47,4 @@ class Api::V1::GamesController < ApplicationController
     end
   end
 end
+
