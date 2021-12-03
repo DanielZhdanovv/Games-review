@@ -16,7 +16,6 @@ const GamesShow = (props) => {
 
   useEffect(() => {
     helperFetch(`/api/v1/games/${gameId}`).then(gameData => {
-      console.log(gameData)
       setGame(gameData)
       if (gameData.reviews) {
         setReviews(gameData.reviews)
@@ -24,8 +23,9 @@ const GamesShow = (props) => {
     })
     helperFetch('/api/v1/users').then(userData => {
       if (userData) {
-        setUser(userData.user)
+        setUser(userData)
       }
+      
     })
   }, [])
 
@@ -45,7 +45,6 @@ const GamesShow = (props) => {
         throw(new Error(errorMessage))
       }
       const newReview = await response.json()
-      console.log(gameId)
       if (newReview.errors) {
         alert(newReview.errors)
       } else {
@@ -64,7 +63,6 @@ const GamesShow = (props) => {
     }
   }
   const reviewTiles = reviews.map((review) => {
-    console.log("hi")
     return(
       <ReviewTiles
         key={review.id}
@@ -86,10 +84,16 @@ const GamesShow = (props) => {
 
   return(
     <div>
-
-          <h1 className="show">{game.title}</h1>
-          <h1 className="show">{game.genre}</h1>
           <img src={game.thumbnail} alt='game logo image'></img>
+          <h1 className="show">{game.title}</h1>
+          <p className="show">{game.description}</p>
+          <p className="show">{game.platform}</p>
+          <p className="show">{game.publisher}</p>
+          <p className="show">{game.developer}</p>
+          <p className="show">{game.release_date}</p>
+          {/* <p className="show">{game.minimum_system_requirements}</p>
+          <p className="show">{game.screenshots}</p> */}
+          <p className="show">{game.genre}</p>
 
         {createReviews}
         <div>
