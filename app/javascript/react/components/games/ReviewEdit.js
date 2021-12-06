@@ -19,14 +19,13 @@ const ReviewEdit = (props) => {
     <div className="cell small-8">
       <form onSubmit={handleSubmit}>
 
-        <label htmlFor="body">Edit Review</label>
+        <label htmlFor="body" className="edit-text-review"> <strong>Edit Review</strong></label>
         <textarea
           className="edit-form" 
           type="text"
           name="body"
           id="body"
           onChange={handleChange}
-          value={formData.body}
         />
         <input 
         className="edit-button"

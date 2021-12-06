@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2021_12_01_205938) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "rating", null: false
     t.text "body", null: false
     t.bigint "game_id", null: false
     t.bigint "user_id", null: false

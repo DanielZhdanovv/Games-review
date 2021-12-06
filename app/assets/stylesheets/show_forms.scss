@@ -17,4 +17,11 @@
 
 .edit{
   padding: 0 0 1rem 1rem;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.edit:hover{
+  cursor: pointer;
+  color: rgb(109, 109, 109);
 }

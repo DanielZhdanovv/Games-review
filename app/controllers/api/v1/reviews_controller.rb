@@ -44,7 +44,7 @@ class Api::V1::ReviewsController < ApplicationController
   private 
 
   def review_params
-    params[:review].permit(:rating, :body)
+    params[:review].permit(:body)
   end
 
   def authorize_user
@@ -56,6 +56,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:rating, :body)
+    params.require(:review).permit(:body)
   end
 end
