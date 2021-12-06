@@ -91,3 +91,22 @@
 .large-article-header-content .article-author a {
   margin-left: 1rem;
 }
+
+.index-image
+{
+    opacity: 1;
+}
+
+.index-image:hover
+{
+    opacity: 2.0;
+    width: 23.5rem;
+    box-shadow: red 10px;
+}
+.index-image.custom:hover,
+.index-image.custom:focus 
+{
+    transition: .9s;
+    transform: scale(1.15);
+}
+

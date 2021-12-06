@@ -1,0 +1,96 @@
+.form {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.textarea{
+  width: 30%;
+  margin: 0 auto;
+}
+
+.form-text {
+  text-align: center;
+  color: white;
+  margin-top: 1.5rem;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.button {
+  width: 30%;
+  text-align: center;
+  margin: 2rem 31.5rem 0 31.5rem;
+  color: white;
+  background-color: #000000;
+  padding: 12.24px 14.4px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.button a{
+  color: white;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.button a:hover{
+  color: black;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.button:hover{
+  background-color: white;
+  color: black;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.button-fix a {
+    text-align: center;
+    margin: 3rem 30.5rem;
+    color: white;
+    padding: 20px 14.4px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Open sans', sans-serif;
+  }
+
+  .submit-button {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+    background-color: #000000;
+    padding: 12.24px 14.4px;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    font-family: 'Open sans', sans-serif;
+  }
+
+  .submit-button:hover{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-family: 'Open sans', sans-serif;
+  }
+
+  .edit-button {
+    width: 30%;
+    text-align: center;
+    margin: 0rem 31.5rem 5px 0.5rem;
+    color: white;
+    background-color: #000000;
+    padding: 12.24px 14.4px;
+    font-size: 1rem;
+    font-family: 'Open sans', sans-serif;
+  }
+  
+  .edit-button a{
+    color: white;
+    font-weight: bold;
+    font-family: 'Open sans', sans-serif;
+  }

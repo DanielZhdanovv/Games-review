@@ -1,4 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
+
+  def show
+    render json: Review.find_by(params[:id])
+  end
   def create
     game = Game.find_by(api_id: params[:game_id])
     review = Review.new(review_params)
@@ -12,9 +16,44 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-
-
+    render json: Review.find(params[:id])
   end
+
+  def update
+    review = Review.find(params[:id])
+    if review.update(review_params)
+      flash[:notification] = "Review updated"
+      render json: review 
+    else
+      flash.now[:error] = review.errors.full_messages.to_sentence
+      render json: review
+    end
+  end
+
+  def delete
+    review = Review.find(params[:id])
+    if current_user.id == review.user.id
+      review.delete
+
+      render json: review
+    else
+      render json: { error: item.errors.full_messages }
+    end
+  end
+
+  private 
+
+  def review_params
+    params[:review].permit(:rating, :body)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:rating, :body)

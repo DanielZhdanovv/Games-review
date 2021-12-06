@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import helperFetch from '../helpers/Fetcher.js'
 import ReviewForm from './ReviewsForm.js'
 import ReviewTiles from './ReviewTiles.js'
+import {Link} from 'react-router-dom'
 
 const GamesShow = (props) => {
   const [game, setGame] = useState({})
@@ -77,25 +78,36 @@ const GamesShow = (props) => {
       <ReviewForm 
         addNewReview={addNewReview} 
         formData={formData} 
-        setFormData={setFormData} 
+        setFormData={setFormData}
       />
     )
   }
 
   return(
     <div>
-          <img src={game.thumbnail} alt='game logo image'></img>
-          <h1 className="show">{game.title}</h1>
-          <p className="show">{game.description}</p>
-          <p className="show">{game.platform}</p>
-          <p className="show">{game.publisher}</p>
-          <p className="show">{game.developer}</p>
-          <p className="show">{game.release_date}</p>
-          {/* <p className="show">{game.minimum_system_requirements}</p>
-          <p className="show">{game.screenshots}</p> */}
-          <p className="show">{game.genre}</p>
-
+    <div className="show-page">
+    <div className="work-feature-block row">
+  <div className="row">
+    <img className="work-feature-block-image row" src={game.thumbnail} alt="game logo image"/>
+    <h2 className="details">Game Details</h2>
+    <ul className="ul-list">
+      <li><strong>Platform:</strong>  {game.platform}</li>
+      <li><strong>Publisher:</strong>  {game.publisher}</li>
+      <li><strong>Developer:</strong>  {game.developer}</li>
+      <li><strong>Release date:</strong>  {game.release_date}</li>
+      <li><strong>Genre:</strong>  {game.genre}</li>
+      <li><strong>Title:</strong>  {game.title}</li>
+    </ul>
+  </div>
+  <div className="columns medium-5">
+    <h2 className="work-feature-block-header" className="show-text"><strong>Description:</strong></h2>
+    <p className="show-text">{game.description}</p>
+  </div>
+</div>
+</div>  
+      <div  className="show-form">
         {createReviews}
+        </div>
         <div>
         {reviewTiles}
         </div>
