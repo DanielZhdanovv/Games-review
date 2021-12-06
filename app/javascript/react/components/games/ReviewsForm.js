@@ -41,7 +41,7 @@ const ReviewForm = (props) => {
           {ratingButtons}
         </div> */}
 
-        <label htmlFor="body" className="ratings">Review</label>
+        <label htmlFor="body" className="ratings"><strong>Create a review!</strong></label>
         <textarea
           type="text"
           name="body"

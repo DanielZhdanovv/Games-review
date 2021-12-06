@@ -87,20 +87,20 @@ const GamesShow = (props) => {
     <div>
     <div className="show-page">
     <div className="work-feature-block row">
-  <div className="columns medium-7">
+  <div className="row">
     <img className="work-feature-block-image row" src={game.thumbnail} alt="game logo image"/>
-    <h2 className="show-text">Project Details</h2>
-    <ul className="show-text row">
-      <li>Platform: {game.platform}</li>
-      <li>Publisher: {game.publisher}</li>
-      <li>Developer: {game.developer}</li>
-      <li>Release date: {game.release_date}</li>
-      <li>Genre: {game.genre}</li>
-      <li>Title: {game.title}</li>
+    <h2 className="details">Game Details</h2>
+    <ul className="ul-list">
+      <li><strong>Platform:</strong>  {game.platform}</li>
+      <li><strong>Publisher:</strong>  {game.publisher}</li>
+      <li><strong>Developer:</strong>  {game.developer}</li>
+      <li><strong>Release date:</strong>  {game.release_date}</li>
+      <li><strong>Genre:</strong>  {game.genre}</li>
+      <li><strong>Title:</strong>  {game.title}</li>
     </ul>
   </div>
   <div className="columns medium-5">
-    <h2 className="work-feature-block-header" className="show-text">Description</h2>
+    <h2 className="work-feature-block-header" className="show-text"><strong>Description:</strong></h2>
     <p className="show-text">{game.description}</p>
   </div>
 </div>
