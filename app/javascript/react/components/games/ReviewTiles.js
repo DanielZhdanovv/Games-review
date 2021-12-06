@@ -11,7 +11,7 @@ const ReviewTiles = (props) => {
     rating: "2",
     body: ""
   })
-  const formattedRating = `${"★".repeat(review.rating)}${"☆".repeat(5-review.rating)}`
+  // const formattedRating = `${"★".repeat(review.rating)}${"☆".repeat(5-review.rating)}`
 
   let text = "user"
 
@@ -40,11 +40,11 @@ const ReviewTiles = (props) => {
         alert(newReview.errors)
       } else {
         setCurrentReview(newReview)
+        setFormData({
+          rating: "2",
+          body: review.body
+        })
       }
-      setFormData({
-        rating: "2",
-        body: review.body
-      })
     } catch(err) {
       console.log(err)
     }
@@ -63,18 +63,25 @@ const ReviewTiles = (props) => {
     editReview={editReview}
     />
   }
-
+    const deleteReview=(id) => {
+    if (window.confirm("Are you sure?"))
+    {
+      fetch(`/api/v1/reviews/${id}`,{
+      method: `DELETE`,
+      header: {"Content-Type": "application/json",
+      "Accept": "application/json"
+      }}
+        )
+      }}
   return (
 
     <div className="review-tile cell small-8">
-      <div className="review">
+      <div className="show-name">
         <h2 className={text}>{user.first_name}</h2>
-        <p className="stars">{formattedRating}</p>
-        <button
-        onClick={button} 
-        >Edit me </button>
+        {/* <button onClick={()=> deleteReview(review.id)}>Delete</button> */}
       </div>
       {textField}
+      <button onClick={button} className="edit">Edit me </button>
     </div>
   )
 }

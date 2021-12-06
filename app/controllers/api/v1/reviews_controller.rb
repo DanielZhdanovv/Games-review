@@ -1,4 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
+
+  def show
+    render json: Review.find_by(params[:id])
+  end
   def create
     game = Game.find_by(api_id: params[:game_id])
     review = Review.new(review_params)
@@ -21,19 +25,20 @@ class Api::V1::ReviewsController < ApplicationController
       flash[:notification] = "Review updated"
       render json: review 
     else
-      flash.now[:error] = @review.errors.full_messages.to_sentence
+      flash.now[:error] = review.errors.full_messages.to_sentence
       render json: review
     end
   end
 
-  def destroy
-    @review = Review.find(params[:id])
+  def delete
+    review = Review.find(params[:id])
+    if current_user.id == review.user.id
+      review.delete
 
-    if @review.destroy
-      flash.now[:notification] = "Review has been deleted"
-      redirect_to root_path
+      render json: review
+    else
+      render json: { error: item.errors.full_messages }
     end
-    
   end
 
   private 

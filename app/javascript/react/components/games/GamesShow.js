@@ -78,7 +78,7 @@ const GamesShow = (props) => {
       <ReviewForm 
         addNewReview={addNewReview} 
         formData={formData} 
-        setFormData={setFormData} 
+        setFormData={setFormData}
       />
     )
   }
@@ -104,11 +104,10 @@ const GamesShow = (props) => {
     <p className="show-text">{game.description}</p>
   </div>
 </div>
-</div>
-<Link to={`/games/edit/`}>
-    <p>Edit comment</p>
-    </Link>
+</div>  
+      <div  className="show-form">
         {createReviews}
+        </div>
         <div>
         {reviewTiles}
         </div>
