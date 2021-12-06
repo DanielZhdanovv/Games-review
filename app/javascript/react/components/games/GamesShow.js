@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import helperFetch from '../helpers/Fetcher.js'
 import ReviewForm from './ReviewsForm.js'
 import ReviewTiles from './ReviewTiles.js'
+import {Link} from 'react-router-dom'
 
 const GamesShow = (props) => {
   const [game, setGame] = useState({})
@@ -84,17 +85,29 @@ const GamesShow = (props) => {
 
   return(
     <div>
-          <img src={game.thumbnail} alt='game logo image'></img>
-          <h1 className="show">{game.title}</h1>
-          <p className="show">{game.description}</p>
-          <p className="show">{game.platform}</p>
-          <p className="show">{game.publisher}</p>
-          <p className="show">{game.developer}</p>
-          <p className="show">{game.release_date}</p>
-          {/* <p className="show">{game.minimum_system_requirements}</p>
-          <p className="show">{game.screenshots}</p> */}
-          <p className="show">{game.genre}</p>
-
+    <div className="show-page">
+    <div className="work-feature-block row">
+  <div className="columns medium-7">
+    <img className="work-feature-block-image row" src={game.thumbnail} alt="game logo image"/>
+    <h2 className="show-text">Project Details</h2>
+    <ul className="show-text row">
+      <li>Platform: {game.platform}</li>
+      <li>Publisher: {game.publisher}</li>
+      <li>Developer: {game.developer}</li>
+      <li>Release date: {game.release_date}</li>
+      <li>Genre: {game.genre}</li>
+      <li>Title: {game.title}</li>
+    </ul>
+  </div>
+  <div className="columns medium-5">
+    <h2 className="work-feature-block-header" className="show-text">Description</h2>
+    <p className="show-text">{game.description}</p>
+  </div>
+</div>
+</div>
+<Link to={`/games/edit/`}>
+    <p>Edit comment</p>
+    </Link>
         {createReviews}
         <div>
         {reviewTiles}
