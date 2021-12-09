@@ -54,6 +54,7 @@ const GamesShow = (props) => {
           newReview
         ])
       }
+
       setFormData({
         rating: "",
         body: "",
@@ -63,12 +64,26 @@ const GamesShow = (props) => {
       console.log(err)
     }
   }
-  const reviewTiles = reviews.map((review) => {
+
+  const updateReview = (index) => {
+    setReviews(reviews.slice(0, index).concat(reviews.slice(index + 1, reviews.lenght)))
+  }
+  const deleteReview=(id, position) => {
+    fetch(`/api/v1/reviews/${id}`, { method: 'DELETE' })
+        .then(() => updateReview(position)) ;
+}
+
+  const reviewTiles = reviews.map((review, index) => {
     return(
       <ReviewTiles
         key={review.id}
         review={review}
-        user={review.user}/>
+        user={review.user}
+        position={index}
+        updateReview={updateReview}
+        deleteReview={deleteReview}
+        currentUser={user}
+        />
     ) 
   })
   
@@ -82,6 +97,7 @@ const GamesShow = (props) => {
       />
     )
   }
+
 
   return(
     <div>
