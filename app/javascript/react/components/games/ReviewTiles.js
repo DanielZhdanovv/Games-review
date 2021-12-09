@@ -5,13 +5,12 @@ const ReviewTiles = (props) => {
 
 
   const [edit, setEdit] = useState(false)
-  const { review, user } = props
+  const { review, user, deleteReview, position, currentUser } = props
   const [currentReview, setCurrentReview] = useState (review)
   const[formData, setFormData] = useState({
     rating: "2",
     body: ""
   })
-  // const formattedRating = `${"★".repeat(review.rating)}${"☆".repeat(5-review.rating)}`
 
   let text = "user"
 
@@ -41,7 +40,6 @@ const ReviewTiles = (props) => {
       } else {
         setCurrentReview(newReview)
         setFormData({
-          rating: "2",
           body: review.body
         })
       }
@@ -63,27 +61,25 @@ const ReviewTiles = (props) => {
     editReview={editReview}
     />
   }
-    const deleteReview=(id) => {
-    if (window.confirm("Are you sure?"))
-    {
-      fetch(`/api/v1/reviews/${id}`,{
-      method: `DELETE`,
-      header: {"Content-Type": "application/json",
-      "Accept": "application/json"
-      }}
-        )
-      }}
+  let deleteButton
+  let editButton
+  if (currentUser.id === user.id) {
+    deleteButton = <button onClick={()=> deleteReview(review.id, position)}>Delete</button>
+    editButton =      <button onClick={button} className="edit">Edit me </button>
+  }
   return (
-
+    
     <div className="review-tile cell small-8">
+      {deleteButton}
       <div className="show-name">
         <h2 className={text}>{user.first_name}</h2>
-        {/* <button onClick={()=> deleteReview(review.id)}>Delete</button> */}
       </div>
       {textField}
-      <button onClick={button} className="edit">Edit me </button>
+      {editButton}
+
     </div>
   )
 }
+
 
 export default ReviewTiles;

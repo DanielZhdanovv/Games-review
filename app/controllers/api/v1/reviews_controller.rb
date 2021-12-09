@@ -30,15 +30,10 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     review = Review.find(params[:id])
-    if current_user.id == review.user.id
-      review.delete
-
-      render json: review
-    else
-      render json: { error: item.errors.full_messages }
-    end
+      review.destroy
+    render json: {Success: "Success"}
   end
 
   private 

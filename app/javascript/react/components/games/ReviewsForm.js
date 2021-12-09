@@ -10,23 +10,6 @@ const ReviewForm = (props) => {
     })
   }
 
-  // const numbers = [0, 1, 2, 3, 4, 5]
-
-  // const ratingButtons = (numbers).map(number => {
-  //   return (
-  //     <div key={number}>
-  //       <input
-  //         type="radio"
-  //         name="rating"
-  //         id={number}
-  //         onChange={handleChange}
-  //         value={number}
-  //       />
-  //       <label htmlFor="rating" className="ratings">{number}</label>
-  //     </div>
-  //   )
-  // })
-
   const handleSubmit = (event) => {
     event.preventDefault()
     props.addNewReview(formData)
@@ -35,11 +18,6 @@ const ReviewForm = (props) => {
   return (
     <div className="cell small-8">
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="rating" className="ratings">Rating</label> */}
-
-        {/* <div className="review-button">
-          {ratingButtons}
-        </div> */}
 
         <label htmlFor="body" className="ratings"><strong>Create a review!</strong></label>
         <textarea
