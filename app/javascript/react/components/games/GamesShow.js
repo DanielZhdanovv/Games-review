@@ -65,20 +65,22 @@ const GamesShow = (props) => {
     }
   }
 
-
+  const updateReview = (index) => {
+    setReviews(reviews.slice(0, index).concat(reviews.slice(index + 1, reviews.lenght)))
+  }
   const deleteReview=(id, position) => {
     fetch(`/api/v1/reviews/${id}`, { method: 'DELETE' })
         .then(() => updateReview(position)) ;
 }
 
   const reviewTiles = reviews.map((review, index) => {
-    console.log(user)
     return(
       <ReviewTiles
         key={review.id}
         review={review}
         user={review.user}
         position={index}
+        updateReview={updateReview}
         deleteReview={deleteReview}
         currentUser={user}
         />
