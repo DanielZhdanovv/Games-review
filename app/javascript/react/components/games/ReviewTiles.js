@@ -64,18 +64,18 @@ const ReviewTiles = (props) => {
   let deleteButton
   let editButton
   if (currentUser.id === user.id) {
-    deleteButton = <button onClick={()=> deleteReview(review.id, position)}>Delete</button>
-    editButton =      <button onClick={button} className="edit">Edit me </button>
+    deleteButton = <button className="edit" onClick={()=> deleteReview(review.id, position)}>Delete</button>
+    editButton = <button onClick={button} className="edit">Edit</button>
   }
   return (
     
     <div className="review-tile cell small-8">
-      {deleteButton}
       <div className="show-name">
         <h2 className={text}>{user.first_name}</h2>
       </div>
       {textField}
       {editButton}
+      {deleteButton}
 
     </div>
   )

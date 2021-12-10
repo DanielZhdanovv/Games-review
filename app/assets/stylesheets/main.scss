@@ -103,8 +103,25 @@ body{
   margin: 0.5rem 0.5rem;
   text-align: center;
 }
-// .signup{
-// }
+
+
 .menu {
   background-color: black;
+}
+
+.flash {
+  background-color: green;
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  animation: hideAnimation 0s ease-in 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
 }
