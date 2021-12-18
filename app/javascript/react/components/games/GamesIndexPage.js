@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import GameTile from './GameTile'
 const GamesIndexPage = (props) => {
 	const [games, setGames] = useState([])
+  const [showMoreStatus, setShowMoreStatus] = useState(true)
 
   const fetchGames = async () => {
     const response = await fetch("/api/v1/games")
@@ -13,18 +14,36 @@ const GamesIndexPage = (props) => {
     fetchGames()
   }, [])
 
+  const toggleShowMore = (event) => {
+    event.preventDefault()
+    setShowMoreStatus(!showMoreStatus)
+  }
 
-  const gamesTiles = games.map((game) => {
-    return (
-      <GameTile
-        key={game.id}
-        id={game.id}
-        title={game.title}
-        thumbnail={game.thumbnail}
-
-      />
-    )
-  })
+  let gamesTiles
+      if (showMoreStatus) {
+        gamesTiles = games.slice(0, 12).map((game) => {
+          return (
+            <GameTile
+              key={game.id}
+              id={game.id}
+              title={game.title}
+              thumbnail={game.thumbnail}
+            />
+          )
+        })
+    } else {
+      gamesTiles = games.map((game) => {
+        return (
+          <GameTile
+            key={game.id}
+            id={game.id}
+            title={game.title}
+            thumbnail={game.thumbnail}
+          />
+        )
+      })
+    }
+;
 
 	return(
     <div>
@@ -47,6 +66,7 @@ const GamesIndexPage = (props) => {
     <div className="product-card">
     {gamesTiles}
 </div>
+<button onClick={toggleShowMore} className="edit">Show</button>
 </div>
    
 
