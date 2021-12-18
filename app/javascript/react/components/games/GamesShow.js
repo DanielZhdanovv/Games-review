@@ -8,13 +8,13 @@ const GamesShow = (props) => {
   const [game, setGame] = useState({})
   const [reviews, setReviews] = useState([])
   const [user, setUser] = useState({})
+  const [gameDescription, setGameDescription] = useState(false)
   const gameId = props.match.params.id
   const[formData, setFormData] = useState({
     rating: "",
     body: "",
     game_id: gameId
   })
-
   useEffect(() => {
     helperFetch(`/api/v1/games/${gameId}`).then(gameData => {
       setGame(gameData)
@@ -29,6 +29,7 @@ const GamesShow = (props) => {
       
     })
   }, [])
+  
 
   const addNewReview = async (formPayload) => {
     try {
@@ -98,6 +99,19 @@ const GamesShow = (props) => {
     )
   }
 
+ const descriptionButton = (event) => {
+    event.preventDefault()
+    setGameDescription(!gameDescription)
+  }
+
+  let toggleDescription = game.description
+
+
+  // if (gameDescription === false) {
+  //   toggleDescription = toggleDescription.slice(0, 200)
+  //   }else {
+  //     toggleDescription
+  //   }
 
   return(
     <div>
@@ -117,7 +131,8 @@ const GamesShow = (props) => {
   </div>
   <div className="columns medium-5">
     <h2 className="work-feature-block-header" className="show-text"><strong>Description:</strong></h2>
-    <p className="show-text">{game.description}</p>
+    <p className="show-text">{toggleDescription}</p>
+    {/* <button onClick={descriptionButton}> Show more </button> */}
   </div>
 </div>
 </div>  
