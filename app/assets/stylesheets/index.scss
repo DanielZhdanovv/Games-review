@@ -100,11 +100,7 @@
 
 .index-image:hover
 {
-    opacity: 2.0;
-    width: 23.5rem;
-    -moz-box-shadow: inset 10px 10px 50px #fff;
-    -webkit-box-shadow: inset 10px 10px 50px #fff;
-    box-shadow: inset 10px 10px 50px #fff;
+    -webkit-filter: drop-shadow(-1px 1px 8px #fafafa);
 }
 .index-image.custom:hover,
 .index-image.custom:focus 
