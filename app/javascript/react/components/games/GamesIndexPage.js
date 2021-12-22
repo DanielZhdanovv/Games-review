@@ -66,7 +66,7 @@ const GamesIndexPage = (props) => {
     <div className="product-card">
     {gamesTiles}
 </div>
-<button onClick={toggleShowMore} className="edit">Show</button>
+<button onClick={toggleShowMore} className="show-more">Load More</button>
 </div>
    
 

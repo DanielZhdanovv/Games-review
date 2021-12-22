@@ -51,3 +51,27 @@
   margin: 0 0.5rem;
   width: 30rem;
 }
+
+.show-more {
+  width: 8%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  color: white;
+  background-color: #000000;
+  padding: 12.24px 14.4px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  -ms-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+}
+
+.show-more:hover {
+  color: #000000;
+  background-color: white;
+}

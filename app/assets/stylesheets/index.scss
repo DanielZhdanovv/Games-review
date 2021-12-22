@@ -16,8 +16,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   position: absolute;
   bottom: 7.925rem;
   left: 0;
@@ -95,13 +95,12 @@
 .index-image
 {
     opacity: 1;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
 }
 
 .index-image:hover
 {
-    opacity: 2.0;
-    width: 23.5rem;
-    box-shadow: red 10px;
+    -webkit-filter: drop-shadow(-1px 1px 8px #fafafa);
 }
 .index-image.custom:hover,
 .index-image.custom:focus 
