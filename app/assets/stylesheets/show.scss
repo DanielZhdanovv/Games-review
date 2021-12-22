@@ -51,3 +51,22 @@
   margin: 0 0.5rem;
   width: 30rem;
 }
+
+.show-more {
+  width: 8%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  color: white;
+  background-color: #000000;
+  padding: 12.24px 14.4px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-family: 'Open sans', sans-serif;
+}
+
+.show-more:hover {
+  color: #000000;
+  background-color: white;
+}
