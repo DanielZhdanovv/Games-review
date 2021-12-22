@@ -95,13 +95,16 @@
 .index-image
 {
     opacity: 1;
+    -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
 }
 
 .index-image:hover
 {
     opacity: 2.0;
     width: 23.5rem;
-    box-shadow: red 10px;
+    -moz-box-shadow: inset 10px 10px 50px #fff;
+    -webkit-box-shadow: inset 10px 10px 50px #fff;
+    box-shadow: inset 10px 10px 50px #fff;
 }
 .index-image.custom:hover,
 .index-image.custom:focus 
