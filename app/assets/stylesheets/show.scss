@@ -1,77 +1,76 @@
-.show-text{
-  color: white;
-  padding: auto;
-  font-size: large;
-  text-decoration: none;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.show-text {
+	color: white;
+	padding: auto;
+	font-size: large;
+	text-decoration: none;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.show-text{
-  color: white;
+.show-text {
+	color: white;
 }
 
 .show-page {
-  margin: 1rem 5rem;
+	margin: 1rem 5rem;
 }
 
 .work-feature-block {
-  padding: 10px 0;
+	padding: 10px 0;
 }
 
 .work-feature-block-image {
-  margin-left:15%;
- float:left; 
- width: 25rem;
- }
+	margin-left: 15%;
+	float: left;
+	width: 25rem;
+}
 
-.row{
-  align-self: start;;
+.row {
+	align-self: start;
 }
 
 .ul-list {
-  width:100%;
-  height:auto;
-  padding: 0 5% 5% 0;
-  color: white;
-  margin-left: 40rem;
-  list-style-type: none;
-  font-family: 'Open sans', sans-serif;
-
+	width: 100%;
+	height: auto;
+	padding: 0 5% 5% 0;
+	color: white;
+	margin-left: 40rem;
+	list-style-type: none;
+	font-family: "Open sans", sans-serif;
+	width: 50%;
 }
 
 .details {
-  color: white;
-  margin-left: 38.5rem;
-  padding: 0 1rem;
-  font-weight: bold;
-  font-family: 'Open sans', sans-serif;
-
+	color: white;
+	margin-left: 38.5rem;
+	padding: 0 1rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
 }
 
 .edit-form {
-  margin: 0 0.5rem;
-  width: 30rem;
+	margin: 0 0.5rem;
+	width: 30rem;
 }
 
 .show-more {
-  width: 7%;
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  color: white;
-  background-color: #000000;
-  padding: 12.24px 14.4px;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  font-weight: bold;
-  font-family: 'Open sans', sans-serif;
-  -webkit-transition: color 0.5s ease-out;
-  -moz-transition: color 0.5s ease-out;
-  -o-transition: color 0.5s ease-out;
-  -ms-transition: color 0.5s ease-out;
-  transition: color 0.5s ease-out;
+	width: 7%;
+	text-align: center;
+	margin: 0 auto;
+	display: flex;
+	color: white;
+	background-color: #000000;
+	padding: 12.24px 14.4px;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	font-weight: bold;
+	font-family: "Open sans", sans-serif;
+	-webkit-transition: color 0.5s ease-out;
+	-moz-transition: color 0.5s ease-out;
+	-o-transition: color 0.5s ease-out;
+	-ms-transition: color 0.5s ease-out;
+	transition: color 0.5s ease-out;
 }
 
 .show-more:hover {
-  color: #000000;
-  background-color: white;
+	color: #000000;
+	background-color: white;
 }

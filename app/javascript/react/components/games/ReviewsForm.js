@@ -10,7 +10,7 @@ const ReviewForm = (props) => {
     })
   }
 
-  const handleSubmit = (event) => {
+ const handleSubmit = (event) => {
     event.preventDefault()
     props.addNewReview(formData)
   }
