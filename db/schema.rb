@@ -48,7 +48,8 @@ ActiveRecord::Schema.define(version: 2022_01_08_132746) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "votes", default: 0
+    t.integer "upvotes", default: 0
+    t.integer "downvotes", default: 0
     t.index ["game_id"], name: "index_reviews_on_game_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
