@@ -96,7 +96,7 @@ const GamesShow = (props) => {
 			/>
 		);
 	}
-
+	console.log(game);
 	const descriptionButton = (event) => {
 		event.preventDefault();
 		setGameDescription(!gameDescription);
