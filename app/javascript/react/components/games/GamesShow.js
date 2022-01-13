@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import helperFetch from "../helpers/Fetcher.js";
 import ReviewForm from "./ReviewsForm.js";
 import ReviewTiles from "./ReviewTiles.js";
+import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 const GamesShow = (props) => {
@@ -9,6 +10,7 @@ const GamesShow = (props) => {
 	const [reviews, setReviews] = useState([]);
 	const [user, setUser] = useState({});
 	const [gameDescription, setGameDescription] = useState(false);
+	const [reviewNumber, setReviewNumber] = useState("");
 	const gameId = props.match.params.id;
 	const [formData, setFormData] = useState({
 		rating: "",
@@ -20,6 +22,7 @@ const GamesShow = (props) => {
 			setGame(gameData);
 			if (gameData.reviews) {
 				setReviews(gameData.reviews);
+				setReviewNumber(gameData.reviews.length);
 			}
 		});
 		helperFetch("/api/v1/users").then((userData) => {
@@ -111,54 +114,167 @@ const GamesShow = (props) => {
 	//   }
 
 	return (
-		<div>
-			<div className='show-page'>
-				<div className='work-feature-block row'>
-					<div className='row'>
-						<img
-							className='work-feature-block-image row'
-							src={game.thumbnail}
-							alt='game logo image'
-						/>
-						<h2 className='details'>Game Details</h2>
-						<ul className='ul-list'>
-							<li>
-								<strong>Platform:</strong> {game.platform}
-							</li>
-							<li>
-								<strong>Publisher:</strong> {game.publisher}
-							</li>
-							<li>
-								<strong>Developer:</strong> {game.developer}
-							</li>
-							<li>
-								<strong>Release date:</strong> {game.release_date}
-							</li>
-							<li>
-								<strong>Genre:</strong> {game.genre}
-							</li>
-							<li>
-								<strong>Title:</strong> {game.title}
-							</li>
-							<li>
-								<a href={game.game_url} target='_blank'>
-									Play Now!
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div className='columns medium-5'>
-						<h2 className='work-feature-block-header' className='show-text'>
-							<strong>Description:</strong>
-						</h2>
-						<p className='show-text'>{toggleDescription}</p>
-						{/* <button onClick={descriptionButton}> Show more </button> */}
-					</div>
+		<div className='q1'>
+			<div className='left'>
+				{" "}
+				<img src={game.thumbnail} />{" "}
+				<div>
+					<a href={game.game_url} target='_blank'>
+						{" "}
+						Play Now{" "}
+					</a>
+					<h4>Favorite</h4>
 				</div>
 			</div>
-			<div className='show-form'>{createReviews}</div>
-			<div>{reviewTiles}</div>
+			<div className='right'>
+				{" "}
+				<h1>{game.title}</h1>
+				<p> {reviewNumber} Comments</p> <p>3 Favorite</p>
+				<p>{game.description}</p>
+				<div className='info'>
+					<h2>Aditional information</h2>
+				</div>
+				<div className='row-flex'>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Title</strong>
+						</span>
+						<p>{game.title}</p>
+					</div>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Developer</strong>
+						</span>
+						<p>{game.developer}</p>
+					</div>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Publisher</strong>
+						</span>
+						<p>{game.publisher}</p>
+					</div>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Release Date</strong>
+						</span>
+						<p>{game.release_date}</p>
+					</div>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Genre</strong>
+						</span>
+						<p>{game.genre}</p>
+					</div>
+					<div className='col-6 col-md-4'>
+						<span>
+							<strong>Platform</strong>
+						</span>
+						<p>{game.platform}</p>
+					</div>
+				</div>
+				<h3>{game.title} Screenshots</h3>
+				<div className='row-flex'>
+					<div className='col-6 col-md-4'>
+						<img className='image' src={game.screenshot1} alt='hey'></img>
+					</div>
+					<div className='col-6 col-md-4'>
+						<img className='image' src={game.screenshot2} alt='hey'></img>
+					</div>
+					<div className='col-6 col-md-4'>
+						<img className='image' src={game.screenshot3} alt='hey'></img>
+					</div>
+					<h3>Minimum System Requirements</h3>
+					<div className='row-flex'>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>OS</strong>
+							</span>
+							<p>{game.title}</p>
+						</div>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>Graphics</strong>
+							</span>
+							<p>{game.developer}</p>
+						</div>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>Publisher</strong>
+							</span>
+							<p>{game.publisher}</p>
+						</div>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>Release Date</strong>
+							</span>
+							<p>{game.release_date}</p>
+						</div>
+					</div>
+				</div>
+				<div className='form-line'>{createReviews}</div>
+				<h2>User Comments</h2>
+				<div>{reviewTiles}</div>
+			</div>
 		</div>
+
+		// 		<div>
+		// 			<div className='show-page'>
+		// 				<div className='work-feature-block row'>
+		// 					<div className='row'>
+		// 						<img
+		// 							className='work-feature-block-image row'
+		// 							src={game.thumbnail}
+		// 							alt='game logo image'
+		// 						/>
+		// 						<img
+		// 							className='work-feature-block-image row'
+		// 							src={game.screenshot1}
+		// 							alt='game logo image'
+		// 						/>
+		// 						<img
+		// 							className='work-feature-block-image row'
+		// 							src={game.screenshot2}
+		// 							alt='game logo image'
+		// 						/>
+		// 						<h2 className='details'>Game Details</h2>
+		// 						<ul className='ul-list'>
+		// 							<li>
+		// 								<strong>Platform:</strong> {game.platform}
+		// 							</li>
+		// 							<li>
+		// 								<strong>Publisher:</strong> {game.publisher}
+		// 							</li>
+		// 							<li>
+		// 								<strong>Developer:</strong> {game.developer}
+		// 							</li>
+		// 							<li>
+		// 								<strong>Release date:</strong> {game.release_date}
+		// 							</li>
+		// 							<li>
+		// 								<strong>Genre:</strong> {game.genre}
+		// 							</li>
+		// 							<li>
+		// 								<strong>Title:</strong> {game.title}
+		// 							</li>
+		// 						</ul>
+		// 						<div className='play-now'>
+		// 							<a href={game.game_url} target='_blank'>
+		// 								Play Now!
+		// 							</a>
+		// 						</div>
+		// 					</div>
+		// 					<div className='columns medium-5'>
+		// 						<h2 className='work-feature-block-header' className='show-text'>
+		// 							<strong>Description:</strong>
+		// 						</h2>
+		// 						<p className='show-text'>{toggleDescription}</p>
+		// 						{/* <button onClick={descriptionButton}> Show more </button> */}
+		// 					</div>
+		// 				</div>
+		// 			</div>
+		// 			<div className='show-form'>{createReviews}</div>
+		// 			<div>{reviewTiles}</div>
+		// 		</div>
 	);
 };
 

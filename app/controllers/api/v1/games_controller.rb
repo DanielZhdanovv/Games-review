@@ -39,7 +39,7 @@ class Api::V1::GamesController < ApplicationController
       json_data = response.read_body
       data = JSON.parse(json_data)
 
-      Game.create(api_id: data["id"], title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"], short_description: data["short_description"], description: data["description"], game_url: data["game_url"],platform: data["platform"], publisher: data["publisher"], developer: data["developer"], release_date: data["release_date"], minimum_system_requirements: data["minimum_system_requirements"], screenshots: data["screenshots"][0]["image"])
+      Game.create(api_id: data["id"], title: data["title"], thumbnail: data["thumbnail"], genre: data["genre"], short_description: data["short_description"], description: data["description"], game_url: data["game_url"],platform: data["platform"], publisher: data["publisher"], developer: data["developer"], release_date: data["release_date"], minimum_system_requirements: data["minimum_system_requirements"], screenshot1: data["screenshots"][0]["image"], screenshot2: data["screenshots"][1]["image"], screenshot3: data["screenshots"][2]["image"])
 
       render json: data
     else 
