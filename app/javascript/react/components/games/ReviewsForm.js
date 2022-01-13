@@ -19,7 +19,7 @@ const ReviewForm = (props) => {
     <div className="cell small-8">
       <form onSubmit={handleSubmit}>
 
-        <label htmlFor="body" className="ratings"><strong>Create a review!</strong></label>
+        <label htmlFor="body" className="ratings"><strong>What do you think about NAME</strong></label>
         <textarea
           type="text"
           name="body"

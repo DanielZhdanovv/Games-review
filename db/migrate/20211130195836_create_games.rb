@@ -13,7 +13,9 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :developer
       t.string :release_date
       t.string :minimum_system_requirements
-      t.string :screenshots
+      t.string :screenshot1
+      t.string :screenshot2
+      t.string :screenshot3
       t.timestamps
     end
   end

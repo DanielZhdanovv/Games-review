@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 2022_01_08_132746) do
     t.string "developer"
     t.string "release_date"
     t.string "minimum_system_requirements"
-    t.string "screenshots"
+    t.string "screenshot1"
+    t.string "screenshot2"
+    t.string "screenshot3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
