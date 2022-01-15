@@ -43,6 +43,7 @@ const GamesIndexPage = (props) => {
 			);
 		});
 	}
+
 	return (
 		<div>
 			<div className='row expanded collapse'>
