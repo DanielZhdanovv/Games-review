@@ -63,7 +63,6 @@ const GamesShow = (props) => {
 			console.log(err);
 		}
 	};
-
 	const updateReview = (index) => {
 		setReviews(
 			reviews.slice(0, index).concat(reviews.slice(index + 1, reviews.lenght))
@@ -85,6 +84,7 @@ const GamesShow = (props) => {
 				updateReview={updateReview}
 				deleteReview={deleteReview}
 				currentUser={user}
+				game={game}
 			/>
 		);
 	});
@@ -96,6 +96,7 @@ const GamesShow = (props) => {
 				addNewReview={addNewReview}
 				formData={formData}
 				setFormData={setFormData}
+				game={game.title}
 			/>
 		);
 	}
@@ -189,25 +190,37 @@ const GamesShow = (props) => {
 							<span>
 								<strong>OS</strong>
 							</span>
-							<p>{game.title}</p>
+							<p>{game.os1}</p>
+						</div>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>Processor</strong>
+							</span>
+							<p>{game.os2}</p>
+						</div>
+						<div className='col-6 col-md-4'>
+							<span>
+								<strong>Memory</strong>
+							</span>
+							<p>{game.os3}</p>
 						</div>
 						<div className='col-6 col-md-4'>
 							<span>
 								<strong>Graphics</strong>
 							</span>
-							<p>{game.developer}</p>
+							<p>{game.os4}</p>
 						</div>
 						<div className='col-6 col-md-4'>
 							<span>
-								<strong>Publisher</strong>
+								<strong>Storage</strong>
 							</span>
-							<p>{game.publisher}</p>
+							<p>{game.os5}</p>
 						</div>
 						<div className='col-6 col-md-4'>
 							<span>
-								<strong>Release Date</strong>
+								<strong>Aditional Notes</strong>
 							</span>
-							<p>{game.release_date}</p>
+							<p>Specifications may change during development</p>
 						</div>
 					</div>
 				</div>
