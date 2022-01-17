@@ -1,41 +1,26 @@
 .show-form {
-  width: 40%;
-  margin: 0 auto;
+	width: 40%;
+	margin: 0 auto;
 }
 
-
 .show-form-text {
-  text-align: center;
-  color: white;
-  margin-top: 1.5rem;
+	text-align: center;
+	color: white;
+	margin-top: 1.5rem;
 }
 
 .show-name {
-  color: white;
-  padding: 1rem 1rem 0 1rem;
+	color: white;
+	padding: 1rem 1rem 0 1rem;
 }
 
-.edit{
-  padding: 0 0 1rem 1rem;
-  font-family: sans-serif;
-  font-weight: bold;
-  
+.edit {
+	padding: 0 1rem 1rem 0rem;
+	font-family: sans-serif;
+	font-weight: bold;
 }
 
-// .delete {
-//   padding: 0 0 1rem 1rem;
-//   font-family: sans-serif;
-//   font-weight: bold;
-//   background-color: black;
-//   color: white;
-//   border-radius: 10%;
-//   text-align: center;
-//   float: right;
-//   margin-right: 1rem;
-//   text-align: center;
-// }
-
-.edit:hover{
-  cursor: pointer;
-  color: rgb(109, 109, 109);
+.edit:hover {
+	cursor: pointer;
+	color: rgb(109, 109, 109);
 }
