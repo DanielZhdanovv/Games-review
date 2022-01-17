@@ -155,7 +155,7 @@ const ReviewTiles = (props) => {
 					{textField}
 					{editButton}
 					{deleteButton}
-					<button onClick={likeFunction}> Upvote {like}</button>
+					{/* <button onClick={likeFunction}> Upvote {like}</button> */}
 				</div>
 			</div>
 		</div>

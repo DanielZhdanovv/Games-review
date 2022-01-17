@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import helperFetch from "../helpers/Fetcher.js";
 import ReviewForm from "./ReviewsForm.js";
 import ReviewTiles from "./ReviewTiles.js";
-import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
 
 const GamesShow = (props) => {
 	const [game, setGame] = useState({});
@@ -108,29 +106,26 @@ const GamesShow = (props) => {
 
 	let toggleDescription = game.description;
 
-	// if (gameDescription === false) {
-	//   toggleDescription = toggleDescription.slice(0, 200)
-	//   }else {
-	//     toggleDescription
-	//   }
-
 	return (
 		<div className='q1'>
 			<div className='left'>
 				{" "}
 				<img src={game.thumbnail} />{" "}
 				<div>
-					<a href={game.game_url} target='_blank'>
-						{" "}
-						Play Now{" "}
-					</a>
-					<h4>Favorite</h4>
+					<h2 className='play-now'>
+						<a className='play-now' href={game.game_url} target='_blank'>
+							{" "}
+							<strong>Play Now</strong>{" "}
+						</a>
+					</h2>
+					{/* <h4>Favorite</h4> */}
 				</div>
 			</div>
 			<div className='right'>
 				{" "}
 				<h1>{game.title}</h1>
-				<p> {reviewNumber} Comments</p> <p>3 Favorite</p>
+				<p> {reviewNumber} Comments</p>
+				{/* <p>3 Favorite</p> */}
 				<p>{game.description}</p>
 				<div className='info'>
 					<h2>Aditional information</h2>
@@ -173,7 +168,7 @@ const GamesShow = (props) => {
 						<p>{game.platform}</p>
 					</div>
 				</div>
-				<h3>{game.title} Screenshots</h3>
+				<h2>{game.title} Screenshots</h2>
 				<div className='row-flex'>
 					<div className='col-6 col-md-4'>
 						<img className='image' src={game.screenshot1} alt='hey'></img>
@@ -184,7 +179,9 @@ const GamesShow = (props) => {
 					<div className='col-6 col-md-4'>
 						<img className='image' src={game.screenshot3} alt='hey'></img>
 					</div>
-					<h3>Minimum System Requirements</h3>
+					<div className='info'>
+						<h2>Minimum System Requirements</h2>
+					</div>
 					<div className='row-flex'>
 						<div className='col-6 col-md-4'>
 							<span>
@@ -229,65 +226,6 @@ const GamesShow = (props) => {
 				<div>{reviewTiles}</div>
 			</div>
 		</div>
-
-		// 		<div>
-		// 			<div className='show-page'>
-		// 				<div className='work-feature-block row'>
-		// 					<div className='row'>
-		// 						<img
-		// 							className='work-feature-block-image row'
-		// 							src={game.thumbnail}
-		// 							alt='game logo image'
-		// 						/>
-		// 						<img
-		// 							className='work-feature-block-image row'
-		// 							src={game.screenshot1}
-		// 							alt='game logo image'
-		// 						/>
-		// 						<img
-		// 							className='work-feature-block-image row'
-		// 							src={game.screenshot2}
-		// 							alt='game logo image'
-		// 						/>
-		// 						<h2 className='details'>Game Details</h2>
-		// 						<ul className='ul-list'>
-		// 							<li>
-		// 								<strong>Platform:</strong> {game.platform}
-		// 							</li>
-		// 							<li>
-		// 								<strong>Publisher:</strong> {game.publisher}
-		// 							</li>
-		// 							<li>
-		// 								<strong>Developer:</strong> {game.developer}
-		// 							</li>
-		// 							<li>
-		// 								<strong>Release date:</strong> {game.release_date}
-		// 							</li>
-		// 							<li>
-		// 								<strong>Genre:</strong> {game.genre}
-		// 							</li>
-		// 							<li>
-		// 								<strong>Title:</strong> {game.title}
-		// 							</li>
-		// 						</ul>
-		// 						<div className='play-now'>
-		// 							<a href={game.game_url} target='_blank'>
-		// 								Play Now!
-		// 							</a>
-		// 						</div>
-		// 					</div>
-		// 					<div className='columns medium-5'>
-		// 						<h2 className='work-feature-block-header' className='show-text'>
-		// 							<strong>Description:</strong>
-		// 						</h2>
-		// 						<p className='show-text'>{toggleDescription}</p>
-		// 						{/* <button onClick={descriptionButton}> Show more </button> */}
-		// 					</div>
-		// 				</div>
-		// 			</div>
-		// 			<div className='show-form'>{createReviews}</div>
-		// 			<div>{reviewTiles}</div>
-		// 		</div>
 	);
 };
 
