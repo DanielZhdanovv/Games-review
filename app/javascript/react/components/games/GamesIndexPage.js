@@ -28,6 +28,7 @@ const GamesIndexPage = (props) => {
 					id={game.id}
 					title={game.title}
 					thumbnail={game.thumbnail}
+					genre={game.genre}
 				/>
 			);
 		});
@@ -39,6 +40,7 @@ const GamesIndexPage = (props) => {
 					id={game.id}
 					title={game.title}
 					thumbnail={game.thumbnail}
+					genre={game.genre}
 				/>
 			);
 		});
