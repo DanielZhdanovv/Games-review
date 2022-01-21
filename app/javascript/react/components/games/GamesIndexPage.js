@@ -1,14 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import GameTile from "./GameTile";
+import Search from "./Search";
 const GamesIndexPage = (props) => {
 	const [games, setGames] = useState([]);
 	const [showMoreStatus, setShowMoreStatus] = useState(true);
+	const [search, setSearch] = useState([]);
+	const [searchResults, setSearchResults] = useState([]);
 
 	const fetchGames = async () => {
 		const response = await fetch("/api/v1/games");
 		const parsedGames = await response.json();
 		setGames(parsedGames.data);
+		setSearchResults(parsedGames.data);
 	};
 	useEffect(() => {
 		fetchGames();
@@ -19,32 +23,39 @@ const GamesIndexPage = (props) => {
 		setShowMoreStatus(!showMoreStatus);
 	};
 
-	let gamesTiles;
+	let gameTiles;
 	if (showMoreStatus) {
-		gamesTiles = games.slice(0, 12).map((game) => {
+		gameTiles = searchResults.slice(0, 12).map((game) => {
 			return (
-				<GameTile
-					key={game.id}
-					id={game.id}
-					title={game.title}
-					thumbnail={game.thumbnail}
-					genre={game.genre}
-				/>
+				<div key={game.id}>
+					<GameTile game={game} />
+				</div>
 			);
 		});
 	} else {
-		gamesTiles = games.map((game) => {
+		gameTiles = searchResults.map((game) => {
 			return (
-				<GameTile
-					key={game.id}
-					id={game.id}
-					title={game.title}
-					thumbnail={game.thumbnail}
-					genre={game.genre}
-				/>
+				<div key={game.id}>
+					<GameTile game={game} />
+				</div>
 			);
 		});
 	}
+
+	let array = games;
+
+	const searchHandler = (search) => {
+		setSearch(search);
+		if (search !== "") {
+			const newBookList = array.filter((game) => {
+				return Object.values(game)
+					.join(" ")
+					.toLowerCase()
+					.includes(search.toLowerCase());
+			});
+			setSearchResults(newBookList);
+		} else array;
+	};
 
 	return (
 		<div>
@@ -61,12 +72,17 @@ const GamesIndexPage = (props) => {
 										Every Free Game You Would <strong>EVER</strong> Need
 									</h1>
 								</div>
+								<Search
+									className='search'
+									term={search}
+									searchKeyword={searchHandler}
+								/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className='product-card'>{gamesTiles}</div>
+			<div className='product-card'>{gameTiles}</div>
 			<button onClick={toggleShowMore} className='show-more'>
 				Load More
 			</button>
