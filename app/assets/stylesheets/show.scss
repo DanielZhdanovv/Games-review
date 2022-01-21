@@ -72,7 +72,6 @@
 .q1 {
 	width: 100%;
 	overflow: hidden;
-	margin-top: 3rem;
 	background-color: #2a2e33;
 }
 
@@ -82,12 +81,13 @@
 	align-self: center;
 	margin-left: 5rem;
 	position: sticky;
-	top: 0;
+	padding-top: 3rem;
 }
 
 .right {
 	margin-left: 35rem;
 	margin-right: 3rem;
+	padding-top: 3rem;
 }
 
 .row {
@@ -208,4 +208,40 @@
 	text-align: center;
 	margin-top: 1rem;
 	border-radius: 1rem;
+}
+
+.gameprofile_background {
+	background-size: cover;
+	background-image: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+	height: 38rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0rem;
+	z-index: -1;
+	opacity: 0.5;
+	height: 62rem;
+	width: 100%;
+}
+
+.gameprofile_gradient {
+	background: linear-gradient(
+			90deg,
+			#292e33 0%,
+			rgba(35, 46, 46, 0.1) 16.15%,
+			rgba(35, 46, 46, 0.1) 80.21%,
+			#292e33 100%
+		),
+		linear-gradient(
+			180deg,
+			rgb(39, 43, 48) 0%,
+			rgba(0, 0, 0, 0.58) 33.85%,
+			#292e33 100%
+		);
+	position: absolute;
+	z-index: -1;
+	height: 62rem;
+	width: 100%;
 }
