@@ -10,6 +10,7 @@ const GameTile = (props) => {
 					src={props.thumbnail}
 					alt='game logo image'
 				></img>
+				<div id='genre'>{props.genre}</div>
 				<span className='product-card-desc'>{props.title}</span>
 			</Link>
 		</div>
