@@ -7,7 +7,8 @@ const GamesShow = (props) => {
 	const [game, setGame] = useState({});
 	const [reviews, setReviews] = useState([]);
 	const [user, setUser] = useState({});
-	const [gameDescription, setGameDescription] = useState(false);
+	const [description, setDescription] = useState([]);
+	const [showMoreStatus, setShowMoreStatus] = useState(true);
 	const [reviewNumber, setReviewNumber] = useState("");
 	const gameId = props.match.params.id;
 	const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const GamesShow = (props) => {
 	useEffect(() => {
 		helperFetch(`/api/v1/games/${gameId}`).then((gameData) => {
 			setGame(gameData);
+			setDescription(gameData.description.slice(0, 830));
 			if (gameData.reviews) {
 				setReviews(gameData.reviews);
 				setReviewNumber(gameData.reviews.length);
@@ -29,6 +31,11 @@ const GamesShow = (props) => {
 			}
 		});
 	}, []);
+
+	const toggleShowMore = (event) => {
+		event.preventDefault();
+		setShowMoreStatus(!showMoreStatus);
+	};
 
 	const addNewReview = async (formPayload) => {
 		try {
@@ -50,6 +57,7 @@ const GamesShow = (props) => {
 				alert(newReview.errors);
 			} else {
 				setReviews([...reviews, newReview]);
+				setReviewNumber(gameData.reviews.length);
 			}
 
 			setFormData({
@@ -98,13 +106,14 @@ const GamesShow = (props) => {
 			/>
 		);
 	}
-	console.log(game);
-	const descriptionButton = (event) => {
-		event.preventDefault();
-		setGameDescription(!gameDescription);
-	};
 
-	let toggleDescription = game.description;
+	let text;
+
+	if (showMoreStatus) {
+		text = description;
+	} else {
+		text = game.description;
+	}
 
 	return (
 		<div className='q1'>
@@ -126,7 +135,12 @@ const GamesShow = (props) => {
 				<h1>{game.title}</h1>
 				<p> {reviewNumber} Comments</p>
 				{/* <p>3 Favorite</p> */}
-				<p>{game.description}</p>
+				<p>
+					{text}{" "}
+					<span onClick={toggleShowMore}>
+						{showMoreStatus ? "Read More" : "Read Less"}
+					</span>
+				</p>
 				<div className='info'>
 					<h2>Aditional information</h2>
 				</div>
