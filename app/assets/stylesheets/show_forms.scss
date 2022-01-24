@@ -24,3 +24,13 @@
 	cursor: pointer;
 	color: rgb(109, 109, 109);
 }
+
+.read-more {
+	color: white;
+	font-weight: bold;
+	transition: all 2s;
+}
+
+.read-more:hover {
+	cursor: pointer;
+}

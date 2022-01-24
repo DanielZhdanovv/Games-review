@@ -57,7 +57,7 @@ const GamesShow = (props) => {
 				alert(newReview.errors);
 			} else {
 				setReviews([...reviews, newReview]);
-				setReviewNumber(gameData.reviews.length);
+				setReviewNumber(game.reviews.length);
 			}
 
 			setFormData({
@@ -122,13 +122,10 @@ const GamesShow = (props) => {
 					{" "}
 					<img src={game.thumbnail} />{" "}
 					<div>
-						<h2 className='play-now'>
-							<a className='play-now' href={game.game_url} target='_blank'>
-								{" "}
-								<strong>Play Now</strong>{" "}
-							</a>
-						</h2>
-						{/* <h4>Favorite</h4> */}
+						<a className='play-now' href={game.game_url} target='_blank'>
+							{" "}
+							<strong>Play Now</strong>{" "}
+						</a>
 					</div>
 				</div>
 				<div className='right'>
@@ -138,7 +135,7 @@ const GamesShow = (props) => {
 					{/* <p>3 Favorite</p> */}
 					<p>
 						{text}{" "}
-						<span onClick={toggleShowMore}>
+						<span className='read-more' onClick={toggleShowMore}>
 							{showMoreStatus ? "Read More" : "Read Less"}
 						</span>
 					</p>
