@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   
+  has_many :favorite_games
+  has_many :games, through: :favorite_games
   has_many :reviews
   
   devise :database_authenticatable, :registerable,

@@ -47,13 +47,13 @@ const GamesIndexPage = (props) => {
 	const searchHandler = (search) => {
 		setSearch(search);
 		if (search !== "") {
-			const newBookList = array.filter((game) => {
+			const newGameList = array.filter((game) => {
 				return Object.values(game)
 					.join(" ")
 					.toLowerCase()
 					.includes(search.toLowerCase());
 			});
-			setSearchResults(newBookList);
+			setSearchResults(newGameList);
 		} else array;
 	};
 
