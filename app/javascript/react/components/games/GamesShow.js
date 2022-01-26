@@ -10,6 +10,7 @@ const GamesShow = (props) => {
 	const [description, setDescription] = useState([]);
 	const [showMoreStatus, setShowMoreStatus] = useState(true);
 	const [reviewNumber, setReviewNumber] = useState("");
+	const [favorited, setFavorited] = useState(false);
 	const gameId = props.match.params.id;
 	const [formData, setFormData] = useState({
 		rating: "",
@@ -32,6 +33,23 @@ const GamesShow = (props) => {
 		});
 	}, []);
 
+	const favorite = async (event) => {
+		const response = await fetch('/api/v1/favorite_games', {
+				method:"POST",
+				headers:{
+				"Content-Type": "application/json",
+				Accept: "application/json"
+				},
+				credentials:"same-origin",
+				body: JSON.stringify({game: game.id})
+		})
+		const responseJson = await response.json()
+		if (responseJson.success) {
+				setFavorited(!favorited)
+		}
+}
+
+	console.log(user);
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
@@ -126,6 +144,7 @@ const GamesShow = (props) => {
 							{" "}
 							<strong>Play Now</strong>{" "}
 						</a>
+						<button onClick={favorite}>Favorite</button>
 					</div>
 				</div>
 				<div className='right'>

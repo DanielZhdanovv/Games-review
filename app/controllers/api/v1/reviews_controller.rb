@@ -2,6 +2,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def show
     render json: Review.find_by(params[:id])
+    binding.pry
   end
   def create
     game = Game.find_by(api_id: params[:game_id])
