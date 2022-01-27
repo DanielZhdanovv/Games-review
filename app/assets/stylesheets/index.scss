@@ -4,11 +4,13 @@
 	background-size: cover;
 	height: 40.25rem;
 	position: relative;
+	max-width: 99.5%;
 }
 
 @media screen and (max-width: 39.9375em) {
 	.large-article-header {
 		height: 20.83333rem;
+		max-width: 99.5%;
 	}
 }
 
@@ -109,4 +111,15 @@
 
 .search {
 	margin-top: 10rem;
+}
+
+.profile-image {
+	border-radius: 50%;
+	display: block;
+	width: 4%;
+	position: absolute;
+	top: 0.2rem;
+	right: 2.2rem;
+	margin-top: 0.1rem;
+	margin-bottom: 0.1rem;
 }

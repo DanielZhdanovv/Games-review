@@ -2,11 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import GameTile from "./GameTile";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 const GamesIndexPage = (props) => {
 	const [games, setGames] = useState([]);
 	const [showMoreStatus, setShowMoreStatus] = useState(true);
 	const [search, setSearch] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
+	const [user, setUser] = useState({});
+	const [profilePhoto, setProfilePhoto] = useState({});
 
 	const fetchGames = async () => {
 		const response = await fetch("/api/v1/games");
@@ -14,14 +17,30 @@ const GamesIndexPage = (props) => {
 		setGames(parsedGames.data);
 		setSearchResults(parsedGames.data);
 	};
+
+	const fetchUser = async () => {
+		const response = await fetch(`/api/v1/users/`);
+		const userData = await response.json();
+		setUser(userData);
+		setProfilePhoto(userData.profile_photo.url);
+	};
+
 	useEffect(() => {
 		fetchGames();
+		fetchUser();
 	}, []);
+	console.log(user);
+	let userImage = "";
+	if (user.id) {
+		userImage = profilePhoto;
+	}
 
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
 	};
+
+	console.log(user.profile_photo);
 
 	let gameTiles;
 	if (showMoreStatus) {
@@ -59,6 +78,9 @@ const GamesIndexPage = (props) => {
 
 	return (
 		<div>
+			<Link to={`/user/${user.id}`}>
+				<img className='profile-image' src={userImage} />
+			</Link>
 			<div className='row expanded collapse'>
 				<div className='column'>
 					<div className='large-article-header'>

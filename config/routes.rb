@@ -5,13 +5,15 @@ Rails.application.routes.draw do
 
   get "/games", to: "homes#index"
   get "/games/:id", to: "homes#index"
+  get "/games/:id", to: "homes#index"
+  get "/user/:id", to: "homes#index"
 
   namespace :api do
     namespace :v1 do
       resources :games, only: [:index, :show]
       resources :reviews, only: [:show, :create, :edit, :update, :destroy]
       resources :users, only: [:index, :show]
-      resources :favorite_games, only: [:create]
+      resources :favorite_games, only: [:index, :create]
     end
   end
 
