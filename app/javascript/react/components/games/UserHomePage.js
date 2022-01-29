@@ -7,9 +7,9 @@ const UserHomePage = (props) => {
 	const [user, setUser] = useState({});
 	const [profilePhoto, setProfilePhoto] = useState({});
 	const [favorites, setFavorites] = useState([]);
-
+	const userId = props.match.params.id;
 	const fetchUser = async () => {
-		const response = await fetch("/api/v1/users/");
+		const response = await fetch(`/api/v1/users/${userId}`);
 		const userData = await response.json();
 		setUser(userData);
 		setProfilePhoto(userData.profile_photo.url);
@@ -27,22 +27,28 @@ const UserHomePage = (props) => {
   const gamesTiles = favorites.map((game) => {
     return (
       <FavoriteTiles
-        key={game.id}
+        key={game.game.id}
 				id={game.game.id}
         title={game.game.title}
         thumbnail={game.game.thumbnail}
+				genre={game.game.genre}
 
       />
     )
   })
 
+
 	return (
 		<div>
+			<h1>{user.first_name}</h1>
+			<img src={profilePhoto} />
 			<Link to={`/user/${user.id}`}>
 				<img className='profile-image' src={userImage} />
 			</Link>
 			<div className='product-card'>{gamesTiles}</div>
+
 		</div>
+		
 	);
 };
 
