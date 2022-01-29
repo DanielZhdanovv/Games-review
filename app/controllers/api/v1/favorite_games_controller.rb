@@ -7,6 +7,10 @@ def index
 end
 
 def create
+  if FavoriteGame.exists?(user: current_user, game_id: params[:game])
+    FavoriteGame.where(user: current_user, game_id: params[:game])[0].delete
+    render json: {success: "succeeded"}
+  else
   favorite = FavoriteGame.new(user: current_user, game_id: params[:game])
   if favorite.save
       render json: {success: "succeeded"}
@@ -15,3 +19,5 @@ def create
   end
 end
 end
+end
+

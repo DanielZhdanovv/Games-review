@@ -97,7 +97,7 @@ const GamesShow = (props) => {
 			updateReview(position)
 		);
 	};
-
+console.log(game)
 	const reviewTiles = reviews.map((review, index) => {
 		return (
 			<ReviewTiles
