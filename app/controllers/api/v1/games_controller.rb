@@ -22,7 +22,7 @@ class Api::V1::GamesController < ApplicationController
   render json: { data: data }
   end
   def show
-
+    
     game = Game.find_by(api_id: params[:id])
     if !Game.exists?(api_id: params[:id])
       url = URI("https://free-to-play-games-database.p.rapidapi.com/api/game?id=#{params["id"]}")
