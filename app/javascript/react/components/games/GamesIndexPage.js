@@ -21,8 +21,9 @@ const GamesIndexPage = (props) => {
 	const fetchUser = async () => {
 		const response = await fetch(`/api/v1/users/`);
 		const userData = await response.json();
-		setUser(userData);
-		setProfilePhoto(userData.profile_photo.url);
+		if (userData) {
+			setUser(userData);
+		}
 	};
 
 	useEffect(() => {
@@ -31,16 +32,14 @@ const GamesIndexPage = (props) => {
 	}, []);
 	console.log(user);
 	let userImage = "";
-	if (user.id) {
-		userImage = profilePhoto;
+	if (user.first_name) {
+		userImage = user.profile_photo.url;
 	}
 
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
 	};
-
-	console.log(user.profile_photo);
 
 	let gameTiles;
 	if (showMoreStatus) {

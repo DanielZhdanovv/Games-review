@@ -9,8 +9,7 @@ class Api::V1::UsersController < ApplicationController
   end
   def show
     user = current_user
-    user.favorite_game = FavoriteGame.game
-    render json: user.favorite_game
+    render json: user
   end
 
   
