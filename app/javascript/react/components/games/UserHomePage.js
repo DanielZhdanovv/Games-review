@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FavoriteTiles from "./FavoriteTiles"
+import PieChart from "./PieChart.js"
 
 const UserHomePage = (props) => {
 	const [user, setUser] = useState({});
@@ -40,6 +41,9 @@ const UserHomePage = (props) => {
 
 	return (
 		<div>
+			<PieChart
+			genre={favorites}
+			/>
 			<h1>{user.first_name}</h1>
 			<img src={profilePhoto} />
 			<Link to={`/user/${user.id}`}>

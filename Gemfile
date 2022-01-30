@@ -50,5 +50,4 @@ gem 'foundation-rails', '~> 6.5'
 gem 'webpacker', '~> 3.3'
 gem 'faraday'
 gem "active_model_serializers"
-gem 'redis', '~> 4.0'
-gem 'warden'
+gem "chartkick"

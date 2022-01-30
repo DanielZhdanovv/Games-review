@@ -35,7 +35,6 @@ const GamesIndexPage = (props) => {
 	if (user.first_name) {
 		userImage = user.profile_photo.url;
 	}
-
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
