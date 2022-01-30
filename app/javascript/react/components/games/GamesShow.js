@@ -34,20 +34,20 @@ const GamesShow = (props) => {
 	}, []);
 
 	const favorite = async (event) => {
-		const response = await fetch('/api/v1/favorite_games', {
-				method:"POST",
-				headers:{
+		const response = await fetch("/api/v1/favorite_games", {
+			method: "POST",
+			headers: {
 				"Content-Type": "application/json",
-				Accept: "application/json"
-				},
-				credentials:"same-origin",
-				body: JSON.stringify({game: game.id})
-		})
-		const responseJson = await response.json()
+				Accept: "application/json",
+			},
+			credentials: "same-origin",
+			body: JSON.stringify({ game: game.id }),
+		});
+		const responseJson = await response.json();
 		if (responseJson.success) {
-				setFavorited(!favorited)
+			setFavorited(!favorited);
 		}
-}
+	};
 
 	console.log(user);
 	const toggleShowMore = (event) => {
@@ -97,7 +97,7 @@ const GamesShow = (props) => {
 			updateReview(position)
 		);
 	};
-console.log(game)
+	console.log(game);
 	const reviewTiles = reviews.map((review, index) => {
 		return (
 			<ReviewTiles
