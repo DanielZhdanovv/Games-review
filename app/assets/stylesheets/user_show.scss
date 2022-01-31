@@ -1,0 +1,52 @@
+.my-pretty-chart-container {
+	color: white;
+	float: right;
+}
+
+.user-image {
+	width: 400px;
+}
+
+.main-container {
+	width: 100%;
+	overflow: hidden;
+	background-color: #2a2e33;
+	margin: 2rem 0rem;
+}
+
+.left-container {
+	float: left;
+	align-items: center;
+	align-self: center;
+	margin-left: 5rem;
+	position: sticky;
+	padding-top: 2.5rem;
+	width: 50%;
+}
+
+.right-container {
+	margin-left: 30rem;
+	margin-right: 5rem;
+	padding-top: 3rem;
+}
+
+.user-name {
+	color: white;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	color: inherit;
+	text-rendering: optimizeLegibility;
+	padding-top: 1rem;
+}
+
+.favorited {
+	color: white;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	color: inherit;
+	text-rendering: optimizeLegibility;
+	padding-top: 1rem;
+	margin: 1rem 5rem;
+}

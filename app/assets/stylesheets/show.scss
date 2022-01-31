@@ -222,6 +222,28 @@
 	color: white;
 	background: #4da6ff;
 	font-size: 2.6rem;
+	background: green;
+}
+
+.favorite {
+	color: white;
+	size: 2.6rem;
+	background: #2a6448;
+	padding: 0.3rem;
+	margin-bottom: 0.2rem;
+}
+
+.favored {
+	background-color: yellow;
+	color: black;
+	size: 2.6rem;
+	padding: 0.3rem;
+	margin-bottom: 0.2rem;
+}
+
+.favorite:hover {
+	cursor: pointer;
+	color: white;
 }
 
 .gameprofile_background {
@@ -259,4 +281,3 @@
 	height: 62rem;
 	width: 100%;
 }
- 

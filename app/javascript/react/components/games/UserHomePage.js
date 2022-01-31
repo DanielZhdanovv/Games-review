@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import FavoriteTiles from "./FavoriteTiles"
-import PieChart from "./PieChart.js"
+import FavoriteTiles from "./FavoriteTiles";
+import PieChart from "./PieChart.js";
 
 const UserHomePage = (props) => {
 	const [user, setUser] = useState({});
@@ -25,36 +25,37 @@ const UserHomePage = (props) => {
 	if (user.id) {
 		userImage = profilePhoto;
 	}
-  const gamesTiles = favorites.map((game) => {
-    return (
-      <FavoriteTiles
-        key={game.game.id}
+	const gamesTiles = favorites.map((game) => {
+		return (
+			<FavoriteTiles
+				key={game.game.id}
 				id={game.game.id}
-        title={game.game.title}
-        thumbnail={game.game.thumbnail}
+				title={game.game.title}
+				thumbnail={game.game.thumbnail}
 				genre={game.game.genre}
-
-      />
-    )
-  })
-
+			/>
+		);
+	});
 
 	return (
 		<div>
-			<PieChart
-			genre={favorites}
-			/>
-			<h1>{user.first_name}</h1>
-			<img src={profilePhoto} />
-			<Link to={`/user/${user.id}`}>
-				<img className='profile-image' src={userImage} />
-			</Link>
+			<div className='main-container'>
+				<div className='left-container'>
+					<img className='user-image' src={profilePhoto} />
+					<h1 className='user-name'>{user.first_name}</h1>
+				</div>
+				<div className='right-container'>
+					<PieChart genre={favorites} />
+				</div>
+				<Link to={`/user/${user.id}`}>
+					<img className='profile-image' src={userImage} />
+				</Link>
+			</div>
+			<hr></hr>
+			<h2 className='favorited'>Favorited Games:</h2>
 			<div className='product-card'>{gamesTiles}</div>
-
 		</div>
-		
 	);
 };
-
 
 export default UserHomePage;

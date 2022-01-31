@@ -9,7 +9,6 @@ const GamesIndexPage = (props) => {
 	const [search, setSearch] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
 	const [user, setUser] = useState({});
-	const [profilePhoto, setProfilePhoto] = useState({});
 
 	const fetchGames = async () => {
 		const response = await fetch("/api/v1/games");
@@ -30,10 +29,13 @@ const GamesIndexPage = (props) => {
 		fetchGames();
 		fetchUser();
 	}, []);
-	console.log(user);
+
 	let userImage = "";
-	if (user.first_name) {
+	if (user.first_name == !undefined) {
 		userImage = user.profile_photo.url;
+	} else {
+		userImage =
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg";
 	}
 	const toggleShowMore = (event) => {
 		event.preventDefault();
