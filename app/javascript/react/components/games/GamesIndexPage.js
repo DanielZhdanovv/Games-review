@@ -32,9 +32,11 @@ const GamesIndexPage = (props) => {
 		fetchUser();
 	}, []);
 
-	let userImage = userPhoto
+	let userImage = userPhoto;
 	if (userPhoto === null) {
-		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
+		userImage =
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg";
+	}
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
