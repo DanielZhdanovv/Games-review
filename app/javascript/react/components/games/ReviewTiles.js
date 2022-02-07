@@ -47,6 +47,7 @@ const ReviewTiles = (props) => {
 		}
 	};
 
+
 	let text = "user";
 
 	if (user.role == "admin") {

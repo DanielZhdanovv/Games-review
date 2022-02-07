@@ -16,14 +16,15 @@ const UserHomePage = (props) => {
 		setUserPhoto(userData.profile_photo.url);
 		setFavorites(userData.favorite_games);
 	};
-
 	useEffect(() => {
 		fetchUser();
 	}, []);
 
-	let userImage = userPhoto
+	let userImage = userPhoto;
 	if (userPhoto === null) {
-		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
+		userImage =
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg";
+	}
 	const gamesTiles = favorites.map((game) => {
 		return (
 			<FavoriteTiles
@@ -38,21 +39,24 @@ const UserHomePage = (props) => {
 
 	return (
 		<div>
+			<Link to={`/user/${user.id}`}>
+				<img className='profile-image' src={userImage} />
+			</Link>
 			<div className='main-container'>
-				<div className='left-container'>
-					<img className='user-image' src={userImage} />
-					<h1 className='user-name'>{user.first_name}</h1>
+				<div className='gameprofile_gradient'>
+					<div className='left-container'>
+						<img className='user-image' src={userImage} />
+						<h1 className='user-name'>{user.first_name}</h1>
+					</div>
+					<div className='right-container'>
+						<PieChart genre={favorites} />
+					</div>
+
+					<hr></hr>
+					<h2 className='favorited'>Favorited Games:</h2>
+					<div className='product-card'>{gamesTiles}</div>
 				</div>
-				<div className='right-container'>
-					<PieChart genre={favorites} />
-				</div>
-				<Link to={`/user/${user.id}`}>
-					<img className='profile-image' src={userImage} />
-				</Link>
 			</div>
-			<hr></hr>
-			<h2 className='favorited'>Favorited Games:</h2>
-			<div className='product-card'>{gamesTiles}</div>
 		</div>
 	);
 };
