@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import helperFetch from "../helpers/Fetcher.js";
 import ReviewForm from "./ReviewsForm.js";
 import ReviewTiles from "./ReviewTiles.js";
+import { Link } from "react-router-dom";
 
 const GamesShow = (props) => {
 	const [game, setGame] = useState({});
@@ -11,6 +12,8 @@ const GamesShow = (props) => {
 	const [showMoreStatus, setShowMoreStatus] = useState(true);
 	const [reviewNumber, setReviewNumber] = useState("");
 	const [favorited, setFavorited] = useState(false);
+	const [subscribed, setSubscribed] = useState("");
+	const [userPhoto, setUserPhoto] = useState("");
 	const gameId = props.match.params.id;
 	const [formData, setFormData] = useState({
 		rating: "",
@@ -21,6 +24,7 @@ const GamesShow = (props) => {
 		helperFetch(`/api/v1/games/${gameId}`).then((gameData) => {
 			setGame(gameData);
 			setDescription(gameData.description.slice(0, 830));
+			setSubscribed(gameData.favorite_games.length);
 			if (gameData.reviews) {
 				setReviews(gameData.reviews);
 				setReviewNumber(gameData.reviews.length);
@@ -29,6 +33,7 @@ const GamesShow = (props) => {
 		helperFetch("/api/v1/users").then((userData) => {
 			if (userData) {
 				setUser(userData);
+				setUserPhoto(userData.profile_photo.url);
 			}
 		});
 	}, []);
@@ -49,11 +54,15 @@ const GamesShow = (props) => {
 		}
 	};
 
-	console.log(user);
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
 	};
+
+	let style = "favorite";
+	if (favorited) {
+		style = "favored";
+	}
 
 	const addNewReview = async (formPayload) => {
 		try {
@@ -97,7 +106,7 @@ const GamesShow = (props) => {
 			updateReview(position)
 		);
 	};
-	console.log(game);
+
 	const reviewTiles = reviews.map((review, index) => {
 		return (
 			<ReviewTiles
@@ -112,6 +121,10 @@ const GamesShow = (props) => {
 			/>
 		);
 	});
+
+	let userImage = userPhoto
+	if (userPhoto === null) {
+		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
 
 	let createReviews;
 	if (user) {
@@ -135,6 +148,9 @@ const GamesShow = (props) => {
 	let backgroundImage;
 	return (
 		<div className='q1'>
+			<Link to={`/user/${user.id}`}>
+				<img className='profile-image' src={userImage} />
+			</Link>
 			<div className='gameprofile_gradient'>
 				<div className='left'>
 					{" "}
@@ -144,13 +160,16 @@ const GamesShow = (props) => {
 							{" "}
 							<strong>Play Now</strong>{" "}
 						</a>
-						<button onClick={favorite}>Favorite</button>
 					</div>
 				</div>
 				<div className='right'>
 					{" "}
 					<h1>{game.title}</h1>
+					<a className={style} onClick={favorite}>
+						Favorite
+					</a>
 					<p> {reviewNumber} Comments</p>
+					<p> {subscribed} Favored</p>
 					{/* <p>3 Favorite</p> */}
 					<p>
 						{text}{" "}

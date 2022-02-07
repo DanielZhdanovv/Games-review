@@ -13,14 +13,12 @@ const ReviewTiles = (props) => {
 	});
 
 	const likeFunction = () => {
-		console.log(review);
 		setlike(like + 1);
 		setCurrentReview({ ...currentReview, upvotes: like + 1 });
 		updateLikes(currentReview);
 	};
 
 	const updateLikes = async () => {
-		console.log(currentReview);
 		try {
 			const response = await fetch(`/api/v1/reviews/${review.id}`, {
 				method: "PATCH",
@@ -48,36 +46,6 @@ const ReviewTiles = (props) => {
 			console.log(err);
 		}
 	};
-
-	// const updateLikes = async (likeCount) => {
-	// 	console.log(currentReview);
-	// 	try {
-	// 		const response = await fetch(`/api/v1/reviews/${review.id}`, {
-	// 			method: "PATCH",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 				Accept: "application/json",
-	// 			},
-	// 			credentials: "same-origin",
-	// 			body: JSON.stringify(currentReview),
-	// 		});
-	// 		if (!response.ok) {
-	// 			const errorMessage = `${response.status} ${response.statusText}`;
-	// 			throw new Error(errorMessage);
-	// 		}
-	// 		const newReview = await response.json();
-	// 		if (newReview.errors) {
-	// 			alert(newReview.errors);
-	// 		} else {
-	// 			setCurrentReview(newReview);
-	// 			setFormData({
-	// 				body: review.body,
-	// 			});
-	// 		}
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
 
 	let text = "user";
 

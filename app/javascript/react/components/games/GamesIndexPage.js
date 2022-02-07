@@ -9,7 +9,7 @@ const GamesIndexPage = (props) => {
 	const [search, setSearch] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
 	const [user, setUser] = useState({});
-	const [profilePhoto, setProfilePhoto] = useState({});
+	const [userPhoto, setUserPhoto] = useState("");
 
 	const fetchGames = async () => {
 		const response = await fetch("/api/v1/games");
@@ -23,6 +23,7 @@ const GamesIndexPage = (props) => {
 		const userData = await response.json();
 		if (userData) {
 			setUser(userData);
+			setUserPhoto(userData.profile_photo.url);
 		}
 	};
 
@@ -30,11 +31,10 @@ const GamesIndexPage = (props) => {
 		fetchGames();
 		fetchUser();
 	}, []);
-	console.log(user);
-	let userImage = "";
-	if (user.first_name) {
-		userImage = user.profile_photo.url;
-	}
+
+	let userImage = userPhoto
+	if (userPhoto === null) {
+		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
 	const toggleShowMore = (event) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);

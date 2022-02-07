@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
     if current_user
       render json: current_user 
     else 
-      render json: {}
+      render json: nil
     end
     
   end
