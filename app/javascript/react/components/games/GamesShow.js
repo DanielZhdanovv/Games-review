@@ -122,9 +122,11 @@ const GamesShow = (props) => {
 		);
 	});
 
-	let userImage = userPhoto
+	let userImage = userPhoto;
 	if (userPhoto === null) {
-		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
+		userImage =
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg";
+	}
 
 	let createReviews;
 	if (user) {
@@ -166,7 +168,7 @@ const GamesShow = (props) => {
 					{" "}
 					<h1>{game.title}</h1>
 					<a className={style} onClick={favorite}>
-						Favorite
+						{favorited ? "Favorited!" : "Favorite"}
 					</a>
 					<p> {reviewNumber} Comments</p>
 					<p> {subscribed} Favored</p>
