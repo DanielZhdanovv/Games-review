@@ -16,7 +16,6 @@ const UserHomePage = (props) => {
 		setUserPhoto(userData.profile_photo.url);
 		setFavorites(userData.favorite_games);
 	};
-	console.log(user);
 	useEffect(() => {
 		fetchUser();
 	}, []);
