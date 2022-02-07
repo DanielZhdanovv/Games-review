@@ -34,6 +34,18 @@ const PieChart = (props) => {
 	let moba = 0;
 	let fighting = 0;
 
+	let userFavorites = {}
+		props.genre.forEach((game) => {
+			if (userFavorites[game.game.genre]) {
+				userFavorites[game.game.genre] += 1
+			} else {
+				userFavorites[game.game.genre] = 1
+
+			}
+
+		})
+
+
 	const genreTitle = props.genre.map((game) => {
 		if (game.game.genre === "Shooter") {
 			shooter += 1;
@@ -113,7 +125,7 @@ const PieChart = (props) => {
 		if (game.game.genre == "MMO") {
 			mmo += 1;
 		}
-		if (game.game.genre == "MMOFPS") {
+		if (game.game.genre == "MMOFPS" ) {
 			mmofps += 1;
 		}
 		if (game.game.genre == "Anime") {
@@ -130,7 +142,6 @@ const PieChart = (props) => {
 		}
 	});
 
-	console.log(shooter);
 	return (
 		<div className={"my-pretty-chart-container"}>
 			<div>

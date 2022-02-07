@@ -6,25 +6,24 @@ import PieChart from "./PieChart.js";
 
 const UserHomePage = (props) => {
 	const [user, setUser] = useState({});
-	const [profilePhoto, setProfilePhoto] = useState({});
 	const [favorites, setFavorites] = useState([]);
+	const [userPhoto, setUserPhoto] = useState("");
 	const userId = props.match.params.id;
 	const fetchUser = async () => {
 		const response = await fetch(`/api/v1/users/${userId}`);
 		const userData = await response.json();
 		setUser(userData);
-		setProfilePhoto(userData.profile_photo.url);
+		setUserPhoto(userData.profile_photo.url);
 		setFavorites(userData.favorite_games);
 	};
 
 	useEffect(() => {
 		fetchUser();
 	}, []);
-	console.log(user);
-	let userImage = "";
-	if (user.id) {
-		userImage = profilePhoto;
-	}
+
+	let userImage = userPhoto
+	if (userPhoto === null) {
+		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
 	const gamesTiles = favorites.map((game) => {
 		return (
 			<FavoriteTiles
@@ -41,7 +40,7 @@ const UserHomePage = (props) => {
 		<div>
 			<div className='main-container'>
 				<div className='left-container'>
-					<img className='user-image' src={profilePhoto} />
+					<img className='user-image' src={userImage} />
 					<h1 className='user-name'>{user.first_name}</h1>
 				</div>
 				<div className='right-container'>

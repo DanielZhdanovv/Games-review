@@ -13,6 +13,7 @@ const GamesShow = (props) => {
 	const [reviewNumber, setReviewNumber] = useState("");
 	const [favorited, setFavorited] = useState(false);
 	const [subscribed, setSubscribed] = useState("");
+	const [userPhoto, setUserPhoto] = useState("");
 	const gameId = props.match.params.id;
 	const [formData, setFormData] = useState({
 		rating: "",
@@ -32,10 +33,10 @@ const GamesShow = (props) => {
 		helperFetch("/api/v1/users").then((userData) => {
 			if (userData) {
 				setUser(userData);
+				setUserPhoto(userData.profile_photo.url);
 			}
 		});
 	}, []);
-	console.log(subscribed);
 
 	const favorite = async (event) => {
 		const response = await fetch("/api/v1/favorite_games", {
@@ -57,16 +58,7 @@ const GamesShow = (props) => {
 		event.preventDefault();
 		setShowMoreStatus(!showMoreStatus);
 	};
-	// let userId = user.id;
-	// function findMyDog(dog) {
-	// 	return id === userId;
-	// }
 
-	// let myDog = game.favorite_games.find((dog) => findMyDog(dog));
-
-	// console.log(myDog);
-
-	// game.favorite_games[0].user.id
 	let style = "favorite";
 	if (favorited) {
 		style = "favored";
@@ -114,7 +106,7 @@ const GamesShow = (props) => {
 			updateReview(position)
 		);
 	};
-	console.log(game);
+
 	const reviewTiles = reviews.map((review, index) => {
 		return (
 			<ReviewTiles
@@ -130,13 +122,9 @@ const GamesShow = (props) => {
 		);
 	});
 
-	let userImage = "";
-	if (user.first_name) {
-		userImage = user.profile_photo.url;
-	} else {
-		userImage =
-			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg";
-	}
+	let userImage = userPhoto
+	if (userPhoto === null) {
+		userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/542px-Unknown_person.jpg"}
 
 	let createReviews;
 	if (user) {
