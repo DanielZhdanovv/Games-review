@@ -140,6 +140,11 @@ const GamesShow = (props) => {
 		);
 	}
 
+	// if (game.favorite_games) {
+	// 	game.favorite_games.forEach((info) => {
+	// 		console.log(info.user.id);
+	// 	});
+	// }
 	let text;
 
 	if (showMoreStatus) {
