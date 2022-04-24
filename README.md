@@ -1,5 +1,5 @@
 # Free Games
-This website uses the Free Games API to show all the free games that are out there! Users can sign in and rate the games they have played to help others decide what should be their next game to play. Free games website is built with HTML, CSS, React, Ruby on Rails, and a PostgreSQL database. This website is also using an external API, devise for user authentication, test driven development and version control with Git.
+This website uses the Free Games API to show all the free games that are out there! Users can sign in and rate the games they have played to help others decide what should be their next game to play. Free games website is built with HTML, CSS, React, Ruby on Rails, and a PostgreSQL database. This website is also using an external API, devise for user authentication, test driven developmentt and version control with Git.
 
 Visit Free Games!: https://games-review.herokuapp.com/
 
